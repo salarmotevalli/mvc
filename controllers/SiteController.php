@@ -3,8 +3,9 @@
 namespace App\controllers;
 
 use App\core\Application;
+use App\core\Controller;
 
-class SiteController
+class SiteController extends Controller
 {
 
     public  function handleContent()
@@ -14,12 +15,12 @@ class SiteController
 
     public function home()
     {
-        return Application::$app->router->renderView('home');
+        return $this->view('home');
     }
 
     public function hello()
     {
-        return Application::$app->router->renderView('hello');
+        return $this->view('hello');
     }
 
 }
