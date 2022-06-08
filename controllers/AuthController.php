@@ -12,8 +12,8 @@ class AuthController extends Controller
         if ($this->request->isPost()) {
             return 'hello from post';
         }
-
-        return $this->view('register');
+        $this->setLayout('auth');
+        return $this->view('login');
     }
 
     public function register()
