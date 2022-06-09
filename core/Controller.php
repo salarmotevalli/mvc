@@ -4,7 +4,7 @@ namespace App\core;
 
 class Controller
 {
-    public $request;
+    public Request $request;
     public string $layout= 'main';
 
     public function __construct()
