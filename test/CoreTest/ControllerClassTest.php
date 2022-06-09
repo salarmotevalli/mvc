@@ -18,7 +18,7 @@ class ControllerClassTest extends TestCase
        $this->assertEquals($controller->layout, 'main');
     }   
 
-    public function test_appllication_class_method()
+    public function test_controller_class_method()
     {
         $controller= new Controller;
         $this->assertTrue(method_exists(Controller::class, 'view'));

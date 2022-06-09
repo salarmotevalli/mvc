@@ -8,13 +8,18 @@ class Router
     public Response $response;
     public Request $request;
 
-    public function __construct(Request $request, Response $response)
+    public function __construct()
     {
         $this->request= new Request();
         $this->response= new Response();
     }
 
     protected array $routes= [];
+
+    public function getRoutes(): array
+    {
+        return $this->routes;
+    }
 
     public function get($uri, $callback): void
     {
