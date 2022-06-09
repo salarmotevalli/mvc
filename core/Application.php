@@ -31,9 +31,7 @@ class Application
         return $this->controller;
     }
 
-    /**
-     * @param Controller $controller
-     */
+    /** @param Controller $controller */
     public function setController(Controller $controller): void
     {
         $this->controller = $controller;

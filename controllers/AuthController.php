@@ -21,7 +21,8 @@ class AuthController extends Controller
         if ($this->request->isPost()) {
             return 'hello from post';
         }
-
+        
+        $this->setLayout('auth');
         return $this->view('register');
     }
 }
