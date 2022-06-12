@@ -4,20 +4,14 @@ namespace App\core;
 
 class Controller
 {
-    public Request $request;
     public string $layout= 'main';
 
-    public function __construct()
-    {
-        $this->request = new Request();
-    }
-
-    public function view($view)
+    public function view($view): bool|array|string
     {
         return Application::$app->router->renderView($view);
     }
 
-    public function setLayout($layout)
+    public function setLayout($layout): void
     {
         $this->layout= $layout;
     }

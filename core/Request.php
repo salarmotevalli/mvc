@@ -22,11 +22,19 @@ class Request
 
     public function isGet()
     {
-        return $this->method() === 'get';
+        return $this->method() === 'GET';
     }
 
     public function isPost()
     {
-        return $this->method() === 'post';
+        return $this->method() === 'POST';
+    }
+
+    public function getBody()
+    {
+        if ($this->method() == 'POST'){
+            return $_POST;
+        }
+        return $_GET;
     }
 }

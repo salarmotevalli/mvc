@@ -36,7 +36,7 @@ class Router
         $path= $this->request->getPath();
         $method= $this->request->method();
         $callback= $this->routes[$method][$path];
-
+        $request= $this->request;
         if ($callback === null)
         {
             $this->response->setStatusCode(484);
@@ -53,7 +53,7 @@ class Router
             Application::$app->controller= new $callback[0];
             $callback[0]= Application::$app->controller;
         }
-        return call_user_func($callback);
+        return call_user_func($callback, $request);
     }
 
     public function renderView(string $view): array|bool|string

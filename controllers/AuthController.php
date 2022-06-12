@@ -7,19 +7,19 @@ use App\core\Request;
 
 class AuthController extends Controller
 {
-    public function login()
+    public function login(Request $request)
     {
-        if ($this->request->isPost()) {
-            return 'hello from post';
+        if ($request->isPost()) {
+            return $request->getBody();
         }
         $this->setLayout('auth');
         return $this->view('login');
     }
 
-    public function register()
+    public function register(Request $request)
     {
-        if ($this->request->isPost()) {
-            return 'hello from post';
+        if ($request->isPost()) {
+            return $request->getBody();
         }
         
         $this->setLayout('auth');
