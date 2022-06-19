@@ -8,7 +8,7 @@ use App\core\Controller;
 class SiteController extends Controller
 {
 
-    public  function handleContent()
+    public function handleContent()
     {
         return 'i could handele it from controller';
     }
