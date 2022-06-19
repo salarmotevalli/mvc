@@ -2,16 +2,20 @@
 
 namespace App\core;
 
+use App\core\Rendering\View\View;
+
 class Router
 {
 
     public Response $response;
     public Request $request;
+    public View $view;
 
     public function __construct()
     {
         $this->request= new Request();
         $this->response= new Response();
+        $this->view= new View();
     }
 
     protected array $routes= [];
@@ -40,12 +44,12 @@ class Router
         if ($callback === null)
         {
             $this->response->setStatusCode(484);
-            return $this->renderView('_404');
+            return $this->view->onlyView('_404');
         }
 
         if (is_string($callback))
         {
-            return $this->renderView($callback);
+            return $this->view->renderView($callback);
         }
 
         if (is_array($callback))
@@ -54,26 +58,6 @@ class Router
             $callback[0]= Application::$app->controller;
         }
         return call_user_func($callback, $request);
-    }
-
-    public function renderView(string $view): array|bool|string
-    {
-        return str_replace('{{content}}', $this->onlyView($view), $this->layOutContent());
-    }
-
-    private function layOutContent(): bool|string
-    {
-        $layout= Application::$app->controller->layout;
-        ob_start();
-        require_once Application::$ROOT_DIR . "/views/layout/{$layout}.php";
-        return ob_get_clean();
-    }
-
-    private function onlyView($view): bool|string
-    {
-        ob_start();
-        require_once Application::$ROOT_DIR . "/views/$view.php";
-        return ob_get_clean();
     }
 
     /**

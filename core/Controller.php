@@ -8,7 +8,7 @@ class Controller
 
     public function view($view): bool|array|string
     {
-        return Application::$app->router->renderView($view);
+        return Application::$app->router->view->renderView($view);
     }
 
     public function setLayout($layout): void

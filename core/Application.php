@@ -8,7 +8,7 @@ class Application
     public Router $router;
     public Response $response;
     public Request $request;
-    public Controller $controller;
+    public $controller;
     public static Application $app;
 
     public function __construct($path)
