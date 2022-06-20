@@ -2,16 +2,12 @@
 
 namespace App\core\Rendering\Graphql;
 
+use GraphQL\Type\Definition\ObjectType;
 
 class Mutation
-{ 
+{
     private static array $instances = [];
-    protected function __construct(){
-        $this->rootQury = new ObjectType([
-            'name' => 'Query',
-            'fields' => $this->fields,
-        ]);
-    }
+    protected function __construct(){}
     protected function __clone(){}
     public function __wakeup()
     {
@@ -35,11 +31,10 @@ class Mutation
 
     public array $fields = [];
 
-
-    public $rootQury;
-
-    public function getRootQuery()
+    public function getRoot()
     {
-        return $this->rootQury;
-    }
+        return new ObjectType([
+            'name' => 'Mutation',
+            'fields' => $this->fields,
+        ]);           }
 }

@@ -13,13 +13,20 @@ class Boot
 
     public function __construct()
     {
+        $this->rootQuery= Query::getInstance()->getRoot();
+        $this->rootMutations= Mutation::getInstance()->getRoot();
+    }
+
+    public function run(): void
+    {
         $this->schema = new Schema([
             'query' => $this->rootQuery,
             'mutation' => $this->rootMutations,
         ]);
+        $this->echo($this->output());
     }
 
-    public function output()
+    public function output(): array
     {
         try {
             $rowInput= file_get_contents('php://input');    
@@ -27,9 +34,9 @@ class Boot
             $query = $input['query'];
             $result = GraphQL::executeQuery($this->schema, $query);
         
-            $output = $result->toArray();
+            return $result->toArray();
         } catch (\Exception $e) {
-            $output= [
+            return [
                 'errors' => [
                     [
                         'message' => $e->getMessage()
@@ -39,7 +46,7 @@ class Boot
         }
     }
 
-    public function echo($output)
+    public function echo($output): void
     {
         header('content-type: application/json');
         echo json_encode($output);
