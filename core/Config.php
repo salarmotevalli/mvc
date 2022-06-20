@@ -11,18 +11,9 @@ class Config
     private function __wakeup() {}
     private function __construct()
     {
-        $config['db'] = 'test1';   
-        $config['hostname'] = 'test2';   
-        $config['port'] = '3036';   
-        $config['username'] = 'salarmotevalli'; 
-        
+        $config= require_once Application::$ROOT_DIR. '/config/config.php';
         self::$values= $config;
-    }
 
-    public static function getValue($key)
-    {
-        self::init();
-        return self::$values[$key] ?? '';
     }
 
     public static function init()
@@ -31,5 +22,11 @@ class Config
             self::$instance = new self();
         }
         return self::$instance;
+    }
+
+    public static function getValue($key)
+    {
+        self::init();
+        return self::$values[$key] ?? '';
     }
 }

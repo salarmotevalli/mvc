@@ -2,20 +2,20 @@
 
 namespace App\controllers;
 
-use App\core\Application;
+use App\Model\User;
+use Illuminate\Database\Capsule\Manager as Capsule;
 use App\core\Controller;
+use App\core\Db\Connection;
+use App\core\Db\Connecton;
 
 class SiteController extends Controller
 {
 
-    public function handleContent()
-    {
-        return 'i could handele it from controller';
-    }
-
     public function home()
     {
-        return $this->view('home');
+        Connection::connect();
+        $user= User::find(1);
+        var_dump($user);
     }
 
     public function hello()
