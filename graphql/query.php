@@ -17,4 +17,4 @@ $rootQuery = new ObjectType([
             },
         ],
     ],
-]);
+]);        A::getInstance()->set($this->fields());
