@@ -27,7 +27,7 @@ abstract class Singleton implements SingletonInterface
 
     public function setField($field): void
     {
-        self::getInstance()->fields[] = $field;
+        self::getInstance()->fields = array_merge($field, self::getInstance()->fields);
     }
 
     public array $fields = [];

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Graph;
+namespace App\Graphql;
 
 use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Type\Definition\Type;

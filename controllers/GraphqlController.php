@@ -2,14 +2,13 @@
 
 namespace App\controllers;
 
+use App\core\Controller;
 use App\core\Db\Connection;
 use App\core\Rendering\Graphql\Boot;
 use App\core\Rendering\Graphql\implementation\GraphqlControllerInterface;
-use App\core\Rendering\Graphql\Mutation;
-use App\core\Rendering\Graphql\Query;
-use App\Graph\UserQuery;
+use App\Graphql\UserQuery;
 
-class GraphqlController extends \App\core\Controller implements GraphqlControllerInterface
+class GraphqlController extends Controller implements GraphqlControllerInterface
 {
     public function index(): void
     {
@@ -20,6 +19,11 @@ class GraphqlController extends \App\core\Controller implements GraphqlControlle
         $boot->setRoots();
         $boot->run();
     }
+
+
+    /**
+     * you should register your mutations or queries
+     */
 
     public function setMutationFields(): void
     {

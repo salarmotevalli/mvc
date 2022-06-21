@@ -18,7 +18,6 @@ class Boot
 
     public function run(): void
     {
-//        var_dump($this->rootQuery);
         $schema = new Schema([
             'query' => $this->rootQuery,
             'mutation' => $this->rootMutations,
@@ -26,7 +25,7 @@ class Boot
         $this->echo($this->output($schema));
     }
 
-    public function output($schema)
+    public function output($schema): array
     {
         try {
             $rowInput = file_get_contents('php://input');
@@ -46,7 +45,7 @@ class Boot
         }
     }
 
-    public function echo($output)
+    public function echo($output): void
     {
         header('content-type: application/json');
         echo json_encode($output);
