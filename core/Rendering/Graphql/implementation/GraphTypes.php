@@ -4,9 +4,9 @@ namespace App\core\Rendering\Graphql\implementation;
 
 abstract class GraphTypes implements GraphTypesInterface
 {
-    public function setFields()
+    public  function setField(): void
     {
-        $this->getType()::getInstance()->setFields($this->fields());
+        $this->getType()::getInstance()->setField($this->fields());
     }
 
 

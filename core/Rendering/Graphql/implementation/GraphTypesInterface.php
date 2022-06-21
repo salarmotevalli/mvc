@@ -2,20 +2,15 @@
 
 namespace App\core\Rendering\Graphql\implementation;
 
-use App\core\Rendering\Graphql\Mutation;
-use App\core\Rendering\Graphql\Query;
-use App\core\Rendering\Graphql\Type;
-
 interface GraphTypesInterface
 {
-    public function fields();
+    public function fields(): array;
 
-    public function setFields();
-
+    public function setField():void;
 
     /**
-     * @return Mutation|Type|Query
+     * @return string
      */
-    public function getType(): Mutation|Type|Query;
+    public function getType(): string;
 
 }

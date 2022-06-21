@@ -2,11 +2,10 @@
 
 namespace App\controllers;
 
-use App\Model\User;
+use App\Models\User;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use App\core\Controller;
 use App\core\Db\Connection;
-use App\core\Db\Connecton;
 
 class SiteController extends Controller
 {
