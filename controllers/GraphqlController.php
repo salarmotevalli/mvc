@@ -22,7 +22,9 @@ class GraphqlController extends Controller implements GraphqlControllerInterface
 
 
     /**
-     * you should register your mutations or queries
+     * you can make query and mutation classes
+     * such as --App\Graphql\UserQuery-- and
+     * register them in the below methods
      */
 
     public function setMutationFields(): void

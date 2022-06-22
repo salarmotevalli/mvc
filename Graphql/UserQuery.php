@@ -9,19 +9,28 @@ use GraphQL\Type\Definition\Type;
 class UserQuery extends \App\core\Rendering\Graphql\implementation\GraphTypes
 {
 
+    /**
+     * return field of your query in the bewlow method
+     * @return array[]
+     */
     public function fields(): array
     {
         return [
             'user' => [
                 'type' => UserType::getModelType(),
                 'args' => [
-                    'id' => ['type' => Type::id()],
+                    'id' => Type::id(),
                 ],
                 'resolve' => function ($root, $args) {
                     return User::find($args['id'])->toArray();
                 },
             ],
-
+            'users' => [
+                'type' => Type::listOf(UserType::getModelType()),
+                'resolve' => function ($root, $args) {
+                    return User::all()->toArray();
+                },
+            ]
         ];
     }
 

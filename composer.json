@@ -1,6 +1,6 @@
 {
     "name": "salar/mvc",
-    "description": "simple mvc framework",
+    "description": "provide graphql on mvc structure",
     "type": "project",
     "license": "mit",
     "autoload": {

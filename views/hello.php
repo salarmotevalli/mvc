@@ -1,14 +1,9 @@
-<form action="/posthandel" method="post">
 
-    <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
+<div id="mid-page">
+    <!--Webcome section-->
+    <section id="welcome-section">
+        <h1 style="font-size:40px;">Hey i'am Salar.</h1>
+        <p>a web developer</p>
+    </section>
+</div>
 
-    </div>
-    <button class="btn btn-primary mt-3">submit</button>
-
-</form>

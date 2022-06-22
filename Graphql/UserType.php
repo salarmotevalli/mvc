@@ -7,10 +7,9 @@ use GraphQL\Type\Definition\Type;
 
 class UserType implements \App\core\Rendering\Graphql\implementation\GraphModelInterface
 {
-
-    public static function getModelType(): ObjectType
+    public static function makeModelType(): void
     {
-        return new ObjectType([
+        self::$modelType= new ObjectType([
             'name' => 'user',
             'description' => 'A user',
             'fields' => [
@@ -21,6 +20,17 @@ class UserType implements \App\core\Rendering\Graphql\implementation\GraphModelI
                     'updated_at' => Type::string(),
 
                 ],
-        ]);
+        ]); 
     }
+
+    public static function getModelType(): ObjectType
+    {
+        if (self::$modelType == null){
+            self::makeModelType();
+        }
+        return self::$modelType; 
+    }
+
+    public static $modelType= null;
+
 }

@@ -7,4 +7,5 @@ use GraphQL\Type\Definition\ObjectType;
 interface GraphModelInterface
 {
     public static function getModelType(): ObjectType;
+    public static function makeModelType(): void;
 }
