@@ -6,6 +6,7 @@ use App\core\Controller;
 use App\core\Db\Connection;
 use App\core\Rendering\Graphql\Boot;
 use App\core\Rendering\Graphql\implementation\GraphqlControllerInterface;
+use App\Graphql\UserMutation;
 use App\Graphql\UserQuery;
 
 class GraphqlController extends Controller implements GraphqlControllerInterface
@@ -29,7 +30,7 @@ class GraphqlController extends Controller implements GraphqlControllerInterface
 
     public function setMutationFields(): void
     {
-
+        (new UserMutation)->setField();
     }
 
     public function setQueryFields(): void

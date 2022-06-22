@@ -8,7 +8,6 @@ use GraphQL\Type\Definition\Type;
 
 class UserQuery extends \App\core\Rendering\Graphql\implementation\GraphTypes
 {
-
     /**
      * return field of your query in the bewlow method
      * @return array[]
