@@ -1,17 +1,16 @@
-
 ## About Repository
 
-This project provide graphql method for api on mvc base with php
+This project provide graphql method for api on mvc structure with php
 
 
 
 ## Usage/Examples
 
-1. make type
+1. Make type
 
-2. make query or mutation
+2. Make query or mutation
 
-3. register query and mutation on GraphqlController
+3. Megister query and mutation on GraphqlController
 
 4.
 ```bash 
@@ -19,16 +18,13 @@ php -S 0.0.0.0:8080 -t public
 ```
 
 ----
-1. for make Type of model, make a class such as below ...
+1. For make type of model, make a class such as below ...
 
 ```php
 <?php
-
 namespace any\path;
-
 use \App\core\Rendering\Graphql\implementation\GraphModelInterface;
 use GraphQL\Type\Definition\Type;
-
 class UserType implements GraphModelInterface
 {
       public static function makeModelType(): void
@@ -42,26 +38,20 @@ class UserType implements GraphModelInterface
                     'email' => Type::string(),
                     'created_at' => Type::string(),
                     'updated_at' => Type::string(),
-
                 ],
         ]); 
     }
     .
     .
     .
-
 ```
-2. for make Query make a class such as below ...
+2. For make query make a class such as below ...
 
 ```php
-
 <?php
-
 namespace any\path;
-
 use GraphQL\Type\Definition\Type;
 use App\Models\User;
-
 class UserQuery extend GraphqlType
 {
   public function fields() {
@@ -86,16 +76,13 @@ class UserQuery extend GraphqlType
 }
 ```
 
-- and for make mutation make a class such as below ...
+- And for make mutation make a class such as below ...
 
 ```php
 <?php
-
 namespace any\path;
-
 use GraphQL\Type\Definition\Type;
 use App\Models\User;
-
 class UserMutation extend GraphqlType
 {
   public function fields() {
@@ -122,7 +109,7 @@ class UserMutation extend GraphqlType
 }
 ```
 
-3. and then register them on controller/GraphqlController ...
+3. And then register them on controller/GraphqlController ...
 
 ```php
     /**
@@ -130,27 +117,24 @@ class UserMutation extend GraphqlType
      * such as --App\Graphql\UserQuery-- and
      * register them in the below methods
      */
-
     public function setMutationFields(): void
     {
         (new userMutation())->setField();
     }
-
     public function setQueryFields(): void
     {
         (new userQuery())->setField();
     }
 }
-
 ```
 
 
 
 ## Route
 
-also you can define your specific route in
+Also you can define your specific route in
 -- router/routes.php ---
 #### by default:
 ```http
-  0.0.0.0/graphql
+  0.0.0.0:8080/graphql
 ```

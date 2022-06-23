@@ -24,6 +24,7 @@
     },
     "require": {
         "webonyx/graphql-php": "^14.11",
-        "illuminate/database": "^9.17"
+        "illuminate/database": "^9.17",
+        "cboden/ratchet": "^0.4.4"
     }
 }
