@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\core\Rendering\Graphql;
 
@@ -8,10 +8,13 @@ use GraphQL\Type\Schema;
 class Boot
 {
     public $schema;
+
     public $rootQuery;
+
     public $rootMutations;
 
-    public function setRoots():void {
+    public function setRoots(): void
+    {
         $this->rootQuery = Query::getInstance()->getRoot();
         $this->rootMutations = Mutation::getInstance()->getRoot();
     }
@@ -38,9 +41,9 @@ class Boot
             return [
                 'errors' => [
                     [
-                        'message' => $e->getMessage()
-                    ]
-                ]
+                        'message' => $e->getMessage(),
+                    ],
+                ],
             ];
         }
     }

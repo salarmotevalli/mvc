@@ -1,19 +1,25 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\core;
 
 class Config
 {
-    private static $instance= null;
-    private static $values= null;
+    private static $instance = null;
 
-    private function __clone() {}
-    private function __wakeup() {}
+    private static $values = null;
+
+    private function __clone()
+    {
+    }
+
+    private function __wakeup()
+    {
+    }
+
     private function __construct()
     {
-        $config= require_once Application::$ROOT_DIR. '/config/config.php';
-        self::$values= $config;
-
+        $config = require_once Application::$ROOT_DIR . '/config/config.php';
+        self::$values = $config;
     }
 
     public static function init()
@@ -21,12 +27,14 @@ class Config
         if (self::$instance === null) {
             self::$instance = new self();
         }
+
         return self::$instance;
     }
 
     public static function getValue($key)
     {
         self::init();
+
         return self::$values[$key] ?? '';
     }
 }

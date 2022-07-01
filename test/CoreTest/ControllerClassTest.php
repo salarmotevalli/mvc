@@ -1,30 +1,25 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Test;
+namespace App\test\CoreTest;
 
 use App\core\Controller;
-use App\core\Request;
 use PHPUnit\Framework\TestCase;
-
 
 class ControllerClassTest extends TestCase
 {
-    public function test_controller_class_variable()
+    public function testControllerClassVariable()
     {
-        $controller= new Controller;
-       $this->assertClassHasAttribute('request', Controller::class);
-       $this->assertTrue($controller->request instanceof Request);
-       $this->assertClassHasAttribute('layout', Controller::class);
-       $this->assertEquals($controller->layout, 'main');
-    }   
+        $controller = new Controller();
+        $this->assertClassHasAttribute('layout', Controller::class);
+        $this->assertEquals($controller->layout, 'main');
+    }
 
-    public function test_controller_class_method()
+    public function testControllerClassMethod()
     {
-        $controller= new Controller;
+        $controller = new Controller();
         $this->assertTrue(method_exists(Controller::class, 'view'));
         $this->assertTrue(method_exists(Controller::class, 'setLayout'));
         $controller->setLayout('auth');
         $this->assertEquals($controller->layout, 'auth');
-
     }
 }

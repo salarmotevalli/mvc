@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\controllers;
 
@@ -14,23 +14,21 @@ class GraphqlController extends Controller implements GraphqlControllerInterface
     public function index(): void
     {
         Connection::connect();
-        $boot= new Boot();
+        $boot = new Boot();
         $this->setMutationFields();
         $this->setQueryFields();
         $boot->setRoots();
         $boot->run();
     }
 
-
     /**
      * you can make query and mutation classes
      * such as --App\Graphql\UserQuery-- and
-     * register them in the below methods
+     * register them in the below methods.
      */
-
     public function setMutationFields(): void
     {
-        (new UserMutation)->setField();
+        (new UserMutation())->setField();
     }
 
     public function setQueryFields(): void

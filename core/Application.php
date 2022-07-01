@@ -1,23 +1,28 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\core;
 
 class Application
 {
     public static string $ROOT_DIR;
+
     public Router $router;
+
     public Response $response;
+
     public Request $request;
+
     public $controller;
+
     public static Application $app;
 
     public function __construct($path)
     {
         self::$ROOT_DIR = $path;
-        $this->request= new Request();
-        $this->response= new Response();
-        $this->router= new Router();
-        self::$app= $this;
+        $this->request = new Request();
+        $this->response = new Response();
+        $this->router = new Router();
+        self::$app = $this;
     }
 
     public function run(): void

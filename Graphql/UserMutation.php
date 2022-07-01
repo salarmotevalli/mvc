@@ -1,16 +1,17 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Graphql;
 
-use App\Models\User;
-use GraphQL\Type\Definition\Type;
 use App\core\Rendering\Graphql\implementation\GraphTypes;
 use App\core\Rendering\Graphql\Mutation;
+use App\Models\User;
+use GraphQL\Type\Definition\Type;
 
 class UserMutation extends GraphTypes
 {
     /**
-     * return field of your query in the bewlow method
+     * return field of your query in the bewlow method.
+     *
      * @return array[]
      */
     public function fields(): array
@@ -25,11 +26,12 @@ class UserMutation extends GraphTypes
                     'password' => Type::string(),
                 ],
                 'resolve' => function ($root, $args) {
-                    $user= new User();
-                    $user->name= $args['name'];
-                    $user->email= $args['email'];
-                    $user->password= $args['password'];
+                    $user = new User();
+                    $user->name = $args['name'];
+                    $user->email = $args['email'];
+                    $user->password = $args['password'];
                     $user->save();
+
                     return $user->toArray();
                 },
             ],
@@ -37,7 +39,7 @@ class UserMutation extends GraphTypes
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getType(): string
     {

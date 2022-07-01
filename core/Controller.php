@@ -1,10 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\core;
 
 class Controller
 {
-    public string $layout= 'main';
+    public string $layout = 'main';
 
     public function view($view): bool|array|string
     {
@@ -13,6 +13,6 @@ class Controller
 
     public function setLayout($layout): void
     {
-        $this->layout= $layout;
+        $this->layout = $layout;
     }
 }
