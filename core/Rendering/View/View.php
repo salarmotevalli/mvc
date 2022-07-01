@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\core\Rendering\View;
 
@@ -6,7 +6,6 @@ use App\core\Application;
 
 class View
 {
-
     public function renderView(string $view): array|bool|string
     {
         return str_replace('{{content}}', $this->onlyView($view), $this->layOutContent());
@@ -14,9 +13,10 @@ class View
 
     private function layOutContent(): bool|string
     {
-        $layout= Application::$app->controller->layout;
+        $layout = Application::$app->controller->layout;
         ob_start();
         require_once Application::$ROOT_DIR . "/views/layout/{$layout}.php";
+
         return ob_get_clean();
     }
 
@@ -24,7 +24,7 @@ class View
     {
         ob_start();
         require_once Application::$ROOT_DIR . "/views/$view.php";
+
         return ob_get_clean();
     }
-
 }

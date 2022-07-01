@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Graphql;
 
@@ -9,28 +9,27 @@ class UserType implements \App\core\Rendering\Graphql\implementation\GraphModelI
 {
     public static function makeModelType(): void
     {
-        self::$modelType= new ObjectType([
+        self::$modelType = new ObjectType([
             'name' => 'user',
             'description' => 'A user',
             'fields' => [
-                    'id' => Type::id(),
-                    'name' => Type::string(),
-                    'email' => Type::string(),
-                    'created_at' => Type::string(),
-                    'updated_at' => Type::string(),
-
-                ],
-        ]); 
+                'id' => Type::id(),
+                'name' => Type::string(),
+                'email' => Type::string(),
+                'created_at' => Type::string(),
+                'updated_at' => Type::string(),
+            ],
+        ]);
     }
 
     public static function getModelType(): ObjectType
     {
-        if (self::$modelType == null){
+        if (self::$modelType == null) {
             self::makeModelType();
         }
-        return self::$modelType; 
+
+        return self::$modelType;
     }
 
-    public static $modelType= null;
-
+    public static $modelType = null;
 }

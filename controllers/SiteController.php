@@ -1,19 +1,17 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\controllers;
 
-use App\Models\User;
-use Illuminate\Database\Capsule\Manager as Capsule;
 use App\core\Controller;
 use App\core\Db\Connection;
+use App\Models\User;
 
 class SiteController extends Controller
 {
-
     public function home()
     {
         Connection::connect();
-        $user= User::find(1);
+        $user = User::find(1);
         var_dump($user);
     }
 
@@ -21,5 +19,4 @@ class SiteController extends Controller
     {
         return $this->view('hello');
     }
-
 }

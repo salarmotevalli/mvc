@@ -1,10 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\core;
 
 class Request
 {
-
     public function getPath()
     {
         $path = $_SERVER['REQUEST_URI'] ?? '/';
@@ -12,6 +11,7 @@ class Request
         if ($positin === false) {
             return $path;
         }
+
         return substr($path, 0, $positin);
     }
 
@@ -32,9 +32,10 @@ class Request
 
     public function getBody()
     {
-        if ($this->method() == 'POST'){
+        if ($this->method() == 'POST') {
             return $_POST;
         }
+
         return $_GET;
     }
 }

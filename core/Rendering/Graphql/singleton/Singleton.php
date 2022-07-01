@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\core\Rendering\Graphql\singleton;
 
@@ -7,18 +7,24 @@ use GraphQL\Type\Definition\ObjectType;
 abstract class Singleton implements SingletonInterface
 {
     private static array $instances = [];
-    protected function __construct(){}
-    protected function __clone(){}
+
+    protected function __construct()
+    {
+    }
+
+    protected function __clone()
+    {
+    }
 
     public function __wakeup()
     {
-        throw new \Exception("Cannot unserialize a singleton.");
+        throw new \Exception('Cannot unserialize a singleton.');
     }
 
     public static function getInstance(): self
     {
         $cls = static::class;
-        if (!isset(self::$instances[$cls])) {
+        if (! isset(self::$instances[$cls])) {
             self::$instances[$cls] = new static();
         }
 
@@ -34,9 +40,10 @@ abstract class Singleton implements SingletonInterface
 
     public function getRoot(): ObjectType|null
     {
-        if (empty($this->fields)){
+        if (empty($this->fields)) {
             return null;
         }
+
         return new ObjectType([
             'name' => $this->getName(),
             'fields' => $this->fields,
@@ -45,7 +52,8 @@ abstract class Singleton implements SingletonInterface
 
     public function getName(): string
     {
-        $namespaceArray= explode('\\', get_called_class());
+        $namespaceArray = explode('\\', get_called_class());
+
         return array_pop($namespaceArray);
     }
 }
