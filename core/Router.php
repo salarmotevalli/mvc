@@ -42,7 +42,7 @@ class Router
         $method = $this->request->method();
         $callback = $this->routes[$method][$path];
         if ($callback === null) {
-            $this->response->setStatusCode(484);
+            $this->response->setStatusCode(404);
 
             return $this->view->onlyView('_404');
         }

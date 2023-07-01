@@ -12,7 +12,7 @@ class Application
 
     public Request $request;
 
-    public $controller;
+    public ?Controller $controller;
 
     public static Application $app;
 

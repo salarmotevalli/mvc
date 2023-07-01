@@ -114,7 +114,7 @@ class UserMutation extend GraphqlType
 ```php
     /**
      * you can make query and mutation classes
-     * such as --App\Graphql\UserQuery-- and
+     * such as --App\graphql\UserQuery-- and
      * register them in the below methods
      */
     public function setMutationFields(): void

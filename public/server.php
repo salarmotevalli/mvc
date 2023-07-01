@@ -6,13 +6,17 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
 
- $server = IoServer::factory(
-     new HttpServer(
-        new WsServer(
-            new Chat(),
-        ),
-    ),
-     8081
- );
+$app = new \App\core\Application(__DIR__);
 
- $server->run();
+// $server = IoServer::factory(
+//     new HttpServer(
+//        new WsServer(
+//            new Chat(),
+//        ),
+//    ),
+//     8081
+// );
+
+// $server->run();
+
+$app->run();
