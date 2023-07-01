@@ -41,19 +41,19 @@ class Router
         $path = $this->request->getPath();
         $method = $this->request->method();
         $callback = $this->routes[$method][$path];
-        if ($callback === null) {
-            $this->response->setStatusCode(404);
 
-            return $this->view->onlyView('_404');
-        }
+        switch (true) {
+            case $callback === null:
+                $this->response->setStatusCode(404);
+                return $this->view->onlyView('_404');
 
-        if (is_string($callback)) {
-            return $this->view->renderView($callback);
-        }
+            case is_string($callback):
+                return $this->view->renderView($callback);
 
-        if (is_array($callback)) {
-            Application::$app->controller = new $callback[0]();
-            $callback[0] = Application::$app->controller;
+            case is_array($callback):
+                Application::$app->controller = new $callback[0]();
+                $callback[0] = Application::$app->controller;
+
         }
 
         return call_user_func($callback, $this->request, $this->response);

@@ -4,7 +4,7 @@ namespace App\core;
 
 class Config
 {
-    private static $instance = null;
+    private static ?Config $instance = null;
 
     private static $values = null;
 

@@ -4,9 +4,9 @@ return [
     'db' => [
         'driver' => 'mysql',
         'host' => 'localhost:3306',
-        'database' => 'homestead',
-        'username' => 'homestead',
-        'password' => 'secret',
+        'database' => 'salar',
+        'username' => 'salar',
+        'password' => 'salar',
         'charset' => 'utf8',
         'collation' => 'utf8_unicode_ci',
         'prefix' => '',

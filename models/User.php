@@ -1,8 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace App\Models;
+namespace App\models;
 
-class User extends \Illuminate\Database\Eloquent\Model
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
 {
     protected $table = 'users';
 

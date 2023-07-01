@@ -1,40 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>websocket</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
-<body>
-    <main class="container">
-        <div class="h1 text-center">
-            MIMCHAT
-        </div>
-        <section>
-            <ul id="messages-list">
+<?php declare(strict_types=1);
 
-            </ul>
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../routes/routes.php';
 
-            <form class="chatform">
-                <div>
-                    <label for="message">message</label>
-                    <textarea name="message" id="message" cols="30" rows="4" class="form-control"></textarea>
-                </div>
-                <div>
-                    <button class="btn btn-primary mt-3">send</button>
-                </div>
-            </form>
-        </section>
-    </main>
+$app = new \App\core\Application(__DIR__ . '/..');
 
+set_routes($app);
 
+// $server = IoServer::factory(
+//     new HttpServer(
+//        new WsServer(
+//            new Chat(),
+//        ),
+//    ),
+//     8081
+// );
 
-<script
-  src="js/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-  <script src="js/chat.js"></script>
-</body>
-</html>
+// $server->run();
+
+$app->run();

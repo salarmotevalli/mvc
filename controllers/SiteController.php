@@ -4,7 +4,7 @@ namespace App\controllers;
 
 use App\core\Controller;
 use App\core\Db\Connection;
-use App\Models\User;
+use App\models\User;
 
 class SiteController extends Controller
 {
