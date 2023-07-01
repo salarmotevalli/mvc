@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Graphql;
+namespace App\graphql;
 
 use App\core\Rendering\Graphql\implementation\GraphTypes;
 use App\core\Rendering\Graphql\Mutation;
@@ -21,13 +21,13 @@ class UserMutation extends GraphTypes
                 'type' => UserType::getModelType(),
                 'description' => 'Add a new user',
                 'args' => [
-                    'name' => Type::string(),
+                    'username' => Type::string(),
                     'email' => Type::string(),
                     'password' => Type::string(),
                 ],
                 'resolve' => function ($root, $args) {
                     $user = new User();
-                    $user->name = $args['name'];
+                    $user->username = $args['username'];
                     $user->email = $args['email'];
                     $user->password = $args['password'];
                     $user->save();

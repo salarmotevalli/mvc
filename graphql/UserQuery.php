@@ -1,12 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace App\Graphql;
+namespace App\graphql;
 
+use App\core\Rendering\Graphql\implementation\GraphTypes;
 use App\core\Rendering\Graphql\Query;
-use App\Models\User;
+use App\models\User;
 use GraphQL\Type\Definition\Type;
 
-class UserQuery extends \App\core\Rendering\Graphql\implementation\GraphTypes
+class UserQuery extends GraphTypes
 {
     /**
      * return field of your query in the bewlow method.

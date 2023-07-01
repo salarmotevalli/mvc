@@ -25,6 +25,7 @@ class Boot
             'query' => $this->rootQuery,
             'mutation' => $this->rootMutations,
         ]);
+
         $this->echo($this->output($schema));
     }
 

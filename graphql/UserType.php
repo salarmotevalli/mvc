@@ -14,10 +14,9 @@ class UserType implements \App\core\Rendering\Graphql\implementation\GraphModelI
             'description' => 'A user',
             'fields' => [
                 'id' => Type::id(),
-                'name' => Type::string(),
+                'username' => Type::string(),
                 'email' => Type::string(),
                 'created_at' => Type::string(),
-                'updated_at' => Type::string(),
             ],
         ]);
     }

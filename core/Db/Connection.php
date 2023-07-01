@@ -11,6 +11,7 @@ class Connection
     {
         $capsule = new Capsule();
         $capsule->addConnection(Config::getValue('db'));
+
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
     }

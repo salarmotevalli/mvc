@@ -6,14 +6,15 @@ use App\core\Controller;
 use App\core\Db\Connection;
 use App\core\Rendering\Graphql\Boot;
 use App\core\Rendering\Graphql\implementation\GraphqlControllerInterface;
-use App\Graphql\UserMutation;
-use App\Graphql\UserQuery;
+use App\graphql\UserMutation;
+use App\graphql\UserQuery;
 
 class GraphqlController extends Controller implements GraphqlControllerInterface
 {
     public function index(): void
     {
         Connection::connect();
+
         $boot = new Boot();
         $this->setMutationFields();
         $this->setQueryFields();
